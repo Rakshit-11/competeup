@@ -12,7 +12,6 @@ export interface IOrder extends Document {
     _id: string
     firstName: string
     lastName: string
-    email: string
   }
 }
 
@@ -22,13 +21,8 @@ export type IOrderItem = {
   createdAt: Date
   eventTitle: string
   eventId: string
-  buyer: {
-    firstName: string
-    lastName: string
-    email: string
-  }
+  buyer: string
 }
-
 
 const OrderSchema = new Schema({
   createdAt: {

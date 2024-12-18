@@ -48,6 +48,17 @@ export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
     
+    // Check if the user has already registered for the event
+    const existingOrder = await Order.findOne({
+      event: order.eventId,
+      buyer: order.buyerId,
+    });
+
+    if (existingOrder) {
+      throw new Error('User is already registered for this event.');
+    }
+
+    // If no existing order, proceed to create a new one
     const newOrder = await Order.create({
       ...order,
       event: order.eventId,
@@ -57,8 +68,9 @@ export const createOrder = async (order: CreateOrderParams) => {
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {
     handleError(error);
+    throw error; // Ensure error is propagated to the frontend
   }
-}
+};
 
 // GET ORDERS BY EVENT
 export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEventParams) {

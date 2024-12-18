@@ -49,6 +49,8 @@ const OrderSchema = new Schema({
   },
 })
 
+OrderSchema.index({ event: 1, buyer: 1 }, { unique: true });
+
 const Order = models.Order || model('Order', OrderSchema)
 
 export default Order

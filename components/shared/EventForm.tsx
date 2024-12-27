@@ -307,7 +307,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                         height={24}
                       />
 
-                      <Input placeholder="URL" {...field} className="input-field" />
+                      <Input placeholder="https://www.example.com" {...field} className="input-field" />
                     </div>
 
                   </FormControl>

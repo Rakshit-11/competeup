@@ -22,6 +22,9 @@ import { useRouter } from "next/navigation"
 import { createEvent, updateEvent } from "@/lib/actions/event.actions"
 import { IEvent } from "@/lib/database/models/event.model"
 
+import dynamic from 'next/dynamic'; // For server-side rendering
+import 'react-quill/dist/quill.snow.css'; // Quill CSS
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 type EventFormProps = {
   userId: string
@@ -132,18 +135,24 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         </div>
 
         <div className="flex flex-col gap-5 md:flex-row">
-          <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormControl className="h-72">
-                    <Textarea placeholder="Description" {...field} className="textarea rounded-2xl" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+        <FormField
+        control={form.control}
+        name="description"
+        render={({ field }) => (
+        <FormItem className="w-full">
+          <FormControl>
+            <ReactQuill
+            value={field.value || ""}
+            onChange={field.onChange}
+            theme="snow"
+            placeholder="Enter the event description..."
+            className="rounded-2xl h-56"
             />
+            </FormControl>
+            <FormMessage />
+        </FormItem>
+       )}
+       />
           <FormField
               control={form.control}
               name="imageUrl"

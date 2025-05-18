@@ -1,26 +1,26 @@
 # CompeteUp
 
-A modern platform for managing and participating in college events and competitions.
-
-## Features
-
-- User authentication with Clerk
-- Event creation and management
-- Profile completion system
-- File uploads with UploadThing
-- Payment processing with Stripe
-- Responsive design
-- MongoDB database integration
+A Next.js 14 platform for college events and competitions.
 
 ## Tech Stack
 
 - Next.js 14
+- MongoDB
 - TypeScript
 - Tailwind CSS
-- MongoDB & Mongoose
 - Clerk Authentication
 - Stripe Payments
-- UploadThing
+- Uploadthing for file uploads
+
+## Features
+
+- Event creation and management
+- User authentication
+- Payment processing
+- File uploads
+- Responsive design
+- Server-side rendering
+- Edge-compatible database operations
 
 ## Prerequisites
 
@@ -85,6 +85,9 @@ The project is configured for deployment on Vercel:
 2. Import your repository in Vercel
 3. Configure environment variables in Vercel dashboard
 4. Deploy!
+
+## Test Update
+This line was added to verify Vercel auto-deployment functionality.
 
 ## Contributing
 
